@@ -1,0 +1,19 @@
+{
+  "name": "geo-api",
+  "version": "1.0.0",
+  "description": "Projeto que usa a API de geolocalização do google para calcular a distancia entre 3 pontos ou mais",
+  "main": "./src/main.js",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "dev": "nodemon"
+  },
+  "author": "Ronaldo Guimaraes",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
