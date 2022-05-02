@@ -1,13 +1,12 @@
 const axios = require('axios');
-
-const API_KEY = "AIzaSyCoOyuexHkkA_D4lovTPXCchWlWT95XNGQ";
+require('dotenv').config()
 
 const getLatLngFromAddress = async (address) => {
 
     const endpoint = 'https://maps.googleapis.com/maps/api/geocode/json';
     const queryParams = {
         address: address,
-        key: API_KEY,
+        key: process.env.GEOLOCATION_API_KEY,
     }
 
     const result = await axios.get(endpoint, { params: queryParams })
