@@ -1,8 +1,9 @@
-const express = require('express');
-const GeolocationController = require('./app/geolocation/geolocation.controller');
+import express from 'express';
+import GeolocationController from './app/geolocation/geolocation.controller.js';
 
-const routes = express.Router()
+const routes = express.Router();
 
+// Para fins de teste
 routes.get('/', (request, response) => {
     response.send('Hello World!');
 });
@@ -10,4 +11,4 @@ routes.get('/', (request, response) => {
 // Geolocation
 routes.post('/calculateDistance', GeolocationController.receiveAddressesToCalculate);
 
-module.exports = routes
+export default routes;

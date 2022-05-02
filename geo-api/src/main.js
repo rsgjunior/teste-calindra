@@ -1,12 +1,12 @@
-const express = require('express');
-const routes = require('./routes');
+import express from 'express';
+import routes from './routes.js';
 
 const app = express();
-const porta = 3030;
+const port = 3030;
 
 app.use(express.json());
 app.use(routes);
 
-app.listen(porta, () => {
-    console.log(`Servidor rodando e escutando a porta ${porta}`);
+app.listen(port, () => {
+    console.log(`Servidor rodando e escutando a porta ${port}`);
 });
