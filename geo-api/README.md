@@ -1,6 +1,10 @@
 # Desafio Back-end
 
-Esse é o resultado do desafio do back-end que consiste em fazer uma API Rest que obtenha a latitude e longitude de um endereço dos serviços da google e calcule a distância entre eles
+Esse é o resultado do desafio do back-end que consiste em fazer uma API Rest que obtenha a latitude e longitude de um endereço dos serviços da google e calcule a distância entre eles.
+
+Foi feito em NodeJs utilizando o framework Express.
+
+Para realizar o cálculo da distância entre os pontos utilizei a fórmula de Haversine
 
 ## Passo a passo para rodar
 
