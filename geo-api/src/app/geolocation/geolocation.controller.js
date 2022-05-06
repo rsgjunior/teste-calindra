@@ -3,15 +3,26 @@ import GeolocationService from "./geolocation.service.js";
 export default {
 
     async receiveAddressesToCalculate(request, response) {
-        const { addresses } = request.body;
+        const { enderecos } = request.body;
 
-        console.log(">>> addresses: ", addresses);
+        // Valida se tem no mínimo 3 endereços
+        if (enderecos.length < 3) {
+            return response.status(400).json({ erro: "No mínimo 3 endereços devem ser fornecidos" });
+        }
 
-        const result = await Promise.all(addresses.map(async (address) => GeolocationService.getLatLngFromAddress(address)));
+        const infoFromAddresses = await Promise.all(enderecos.map(async (address) => {
+            return GeolocationService.getInfoFromAddress(address)
+        }));
 
-        console.log(">>> result: ", result);
+        // Se algum endereço da lista não retornar dados na API do google
+        // ele retornará com esse atributo "erro"
+        if(infoFromAddresses.some(address => address.erro)) {
+            return response.status(400).json({ erro: "Algum endereço da lista é inválido" });
+        }
 
-        response.status(200).json(result);
+        const result = GeolocationService.calculateDistanceBetweenAllAdresses(infoFromAddresses);
+
+        return response.status(200).json(result);
     }
     
 };
